@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Webmapp 201</title>
+        <title>Uppgift 1 - Grupp 9</title>
         <link rel="stylesheet" href="src/leaflet.css">
         <link rel="stylesheet" href="src/css/bootstrap.css">
         <link rel="stylesheet" href="src/plugins/L.Control.Zoomslider.css">
@@ -21,12 +21,8 @@
         <script src='swedish_counties.js'></script>
         <script src='countries.js'></script>
         <script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
+        
 
-        
-        
-        
-       
-        
         <style>
             #mapdiv {
                 height: 100vh;
@@ -52,8 +48,7 @@
        <div id="side-bar" class="col-md-3"><h2>My Map</h2>
             <button id="l1">layer1</button>
             <button id="l2">layer2</button>
-            <button id='btnFalun' class='btn btn-primary btn-block'>ZoomToFalun</button>
-  
+            <button id='btnTask1' class='btn btn-primary btn-block'>Zoom to task 1</button>
        </div>
        
        <div id="sidebar"><h1>leaflet-sidebar</h1>
@@ -72,7 +67,7 @@
             
            
             $(document).ready(function(){
-                mymap = L.map('mapdiv', {center:[60.48868922712431, 15.421371459960938], zoom:13});
+                mymap = L.map('mapdiv', {center:[60.5141552254804, 15.714495440221565], zoom:13});
                 lyrOSM= L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
                 mymap.addLayer(lyrOSM);
                 
@@ -83,30 +78,7 @@
                 var sidebar = L.control.sidebar('sidebar', {position: 'left'});
                 mymap.addControl(sidebar);
                 
-                var latlngs = [
-					[60.482370725338484, 15.434717248972277],
-					[60.484316080102275, 15.441777259162706],
-					[60.486972387134756, 15.438435413671698]
-				];
-
-				var polyline = L.polyline(latlngs, {color: 'red'}).addTo(mymap);
-
-                L.control.polylineMeasure().addTo(mymap);
-                               
-                                      
-                var blackIcon = L.icon({
-                    iconUrl: 'map-marker.svg',
-                    iconSize:     [32, 37], // size of the icon
-                    iconAnchor:   [32, 37], // point of the icon which will correspond to marker's location
-                    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
-                });
-                //Koden är till markeringen för när du trycker på en plats. 
-                
-                // Popup and marker
-                popb = L.marker([60.48868922712431, 15.431371459960938],{icon: blackIcon}).addTo(mymap).bindPopup('Intro to Leaflet');
-                
-                popf= L.marker([60.605898734439805,15.628023594617845], {icon:blackIcon}).addTo(mymap).bindPopup("<h3>Falun Museum</h3><img src= 'img/museum.jpg'width='150px'>")
-                
+    
                                 
                 document.getElementById("l1").addEventListener("click", sweden);
 
@@ -143,10 +115,10 @@
                     };
                 
                 
-                
-                $("#btnFalun").click(function(){
-                    mymap.setView([60.605866810126194, 15.628008842468262], 17);
-                })
+/*                 
+                $("#btnTask1").click(function(){
+                    mymap.setView([60.5141552254804, 15.714495440221565], 13);
+                }) */
                 
                 
                 
@@ -163,9 +135,7 @@
   
             });
             
-            
-
-            
        </script>
+       <script src="task1.js"></script>
     </body>
 </html>
