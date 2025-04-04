@@ -53,10 +53,44 @@
             <button id="l1">layer1</button>
             <button id="l2">layer2</button>
             <button id='btnFalun' class='btn btn-primary btn-block'>ZoomToFalun</button>
+            <button id="t2">Task2</button>
   
        </div>
        
-       <div id="sidebar"><h1>leaflet-sidebar</h1>
+       <div id="sidebar"><h1>leaflet-sidebar123</h1>
+        <ul>
+            <li>
+                <h3>Söderbaumskaskolan</h3>
+                <p>År 2001 grundades Söderbaumska skolan som en fristående grundskola med en kulturprofil. I oktober 2021 bytte skolan namn till Innovitaskolan Falun i samband med en ny skolprofilering inom AcadeMedia-koncernen.</p>
+                <p>Antal elever: 550</p>
+                <button id="btns1">Go to Söderbaumskaskolan</button>
+            </li>
+            <li>
+                <h3>Britsarvsskolan</h3>
+                <p>​Britsarvsskolan i Falun började byggas 1964 på platsen där gården Bojsenburg tidigare låg, och stod klar 1966 som en toppmodern skola ritad av arkitekt Jack Hansson. </p>
+                <p>Antal elever: 530</p>
+                <button id="btns2">Go to Britsarvsskolan</button>
+            </li>
+            <li> 
+                <h3>Hälsinggårdsskolan</h3>
+                <p>Idag är Hälsinggårdsskolan en F-9-skola med cirka 700 elever, känd för sitt inkluderande och mångkulturella perspektiv. För närvarande genomgår skolan en omfattande renovering för att modernisera lokalerna och samlokalisera kommunens särskolor, med planerad färdigställning 2025.</p>
+                <p>Antal elever: 600</p>
+                <button id="btns3">Go to Hälsinggårdsskolan</button>
+            </li>
+            <li> 
+                <h3>VästraSkolan</h3>
+                <p>​Västra skolan i Falun invigdes 1915 för att avlasta den då överbelastade Östra skolan. Byggnaden ritades av stadsarkitekten Klas Boman och har tjänat som utbildningsinstitution i över ett sekel.</p>
+                <p>Antal elever: 470</p>
+                <button id="btns4">Go to VästraSkolan</button>
+            </li>
+            <li>
+                <h3>Mosaik</h3>
+                <p>Friskolan Mosaik i Falun grundades 2007 och drivs som en fristående ekonomisk förening. Skolan är belägen på Vasagatan 28 i centrala Falun och erbjuder undervisning från förskoleklass till årskurs 9.</p>
+                <p>Antal elever: 270</p>
+                <button id="btns5">Go to Mosaik</button>
+            </li>
+        </ul>
+
        </div>
         
        <script>
@@ -75,9 +109,8 @@
                 mymap = L.map('mapdiv', {center:[60.48868922712431, 15.421371459960938], zoom:13});
                 lyrOSM= L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
                 mymap.addLayer(lyrOSM);
-                
-                
-                
+
+ 
                 ctlZoomslider = L.control.zoomslider({position:'topright'}).addTo(mymap);
                 
                 var sidebar = L.control.sidebar('sidebar', {position: 'left'});
@@ -103,8 +136,8 @@
                 //Koden är till markeringen för när du trycker på en plats. 
                 
                 // Popup and marker
-                popb = L.marker([60.48868922712431, 15.431371459960938],{icon: blackIcon}).addTo(mymap).bindPopup('Intro to Leaflet');
                 
+                popb = L.marker([60.48868922712431, 15.431371459960938],{icon: blackIcon}).addTo(mymap).bindPopup('Intro to Leaflet');
                 popf= L.marker([60.605898734439805,15.628023594617845], {icon:blackIcon}).addTo(mymap).bindPopup("<h3>Falun Museum</h3><img src= 'img/museum.jpg'width='150px'>")
                 
                                 
@@ -147,9 +180,58 @@
                 $("#btnFalun").click(function(){
                     mymap.setView([60.605866810126194, 15.628008842468262], 17);
                 })
+
                 
                 
-                
+
+
+                document.getElementById("t2").addEventListener("click", school);
+                function school(){
+                    if(mymap.hasLayer(swedishlayer)){
+                        mymap.removeLayer(swedishlayer);
+                        sidebar.hide();
+                        s1.remove();
+                        s2.remove();
+                        s3.remove();
+                        s4.remove();
+                        s5.remove();
+                    } else {
+                        swedishlayer.addTo(mymap);
+                        sidebar.show();
+                        s1 = L.marker([60.61668314092263, 15.627644549953436],{icon: blackIcon}).addTo(mymap).bindPopup('Söderbaumska');
+                        s2 = L.marker([60.625256903746184, 15.622433198014082],{icon: blackIcon}).addTo(mymap).bindPopup('Britsarvsskolan');
+                        s3 = L.marker([60.592595759762666, 15.685269813355674],{icon: blackIcon}).addTo(mymap).bindPopup('hälsinggårdsskolan');
+                        s4 = L.marker([60.604365663833036, 15.624258467326692],{icon: blackIcon}).addTo(mymap).bindPopup('Västraskolan');
+                        s5 = L.marker([60.60984456541524, 15.638397283032829],{icon: blackIcon}).addTo(mymap).bindPopup('Mosaik');
+                    }
+                    $("#btns1").click(function(){
+                    mymap.setView([60.61668314092263, 15.627644549953436], 17);
+                })
+                $("#btns2").click(function(){
+                    mymap.setView([60.625256903746184, 15.622433198014082], 17);
+                })
+                $("#btns3").click(function(){
+                    mymap.setView([60.592595759762666, 15.685269813355674], 17);
+                })
+                $("#btns4").click(function(){
+                    mymap.setView([60.604365663833036, 15.624258467326692], 17);
+                })
+                $("#btns5").click(function(){
+                    mymap.setView([60.60984456541524, 15.638397283032829], 17);
+                })
+                };
+                countrieslayer = L.geoJson(countries, {
+                    onEachFeature: function (feature, layer) {
+                        layer.bindPopup(feature.properties.name);
+                    }
+                });
+
+
+
+
+
+
+
                 // Buffer
                             
   /*              sample1.addTo(mymap);
