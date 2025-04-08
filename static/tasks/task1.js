@@ -18,17 +18,17 @@ const latlngs = [
 ];
 //Mappar ut ytan på kartan
 const polygon = L.polygon(latlngs, { color: "grey" }).addTo(mymap).bindPopup(
-  "<h3>Kyrkbytjärn</h3><img src= 'img/kyrbytjarn.jpg'width='100rem'>"
+  "<h3>Kyrkbytjärn</h3><img src= '/static/img/kyrbytjarn.jpg'width='100rem'>"
 );;
 //Mappar ut linjen på kartan
 const polyline = L.polyline(linesTask1, { color: "blue" }).addTo(mymap).bindPopup(
-  "<h3>Vikavägen</h3><img src= 'img/vika.jpg'width='100rem'>"
+  "<h3>Vikavägen</h3><img src= '/static/img/vika.jpg'width='100rem'>"
 );;
 
 L.control.polylineMeasure().addTo(mymap);
 
 const blackIcon = L.icon({
-  iconUrl: "map-marker.svg",
+  iconUrl: "../map-marker.svg",
   iconSize: [32, 37], // size of the icon
   iconAnchor: [32, 37], // point of the icon which will correspond to marker's location
   popupAnchor: [0, -30], // point from which the popup should open relative to the iconAnchor
@@ -38,7 +38,7 @@ const pointTask = L.marker([60.51402124901837, 15.714639203546412], {
 })
   .addTo(mymap)
   .bindPopup(
-    "<h3>Vika Nära, Krog & Handel</h3><img src= 'img/vika_nara.jpg'width='100rem'>"
+    "<h3>Vika Nära, Krog & Handel</h3><img src= '/static/img/vika_nara.jpg'width='100rem'>"
   );
 
   $("#btnTask1").click(function(){
