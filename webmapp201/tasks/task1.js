@@ -17,9 +17,13 @@ const latlngs = [
   [60.521978644898304, 15.727424317415496],
 ];
 //Mappar ut ytan på kartan
-const polygon = L.polygon(latlngs, { color: "grey" }).addTo(mymap);
+const polygon = L.polygon(latlngs, { color: "grey" }).addTo(mymap).bindPopup(
+  "<h3>Kyrkbytjärn</h3><img src= 'img/kyrbytjarn.jpg'width='100rem'>"
+);;
 //Mappar ut linjen på kartan
-const polyline = L.polyline(linesTask1, { color: "blue" }).addTo(mymap);
+const polyline = L.polyline(linesTask1, { color: "blue" }).addTo(mymap).bindPopup(
+  "<h3>Vikavägen</h3><img src= 'img/vika.jpg'width='100rem'>"
+);;
 
 L.control.polylineMeasure().addTo(mymap);
 

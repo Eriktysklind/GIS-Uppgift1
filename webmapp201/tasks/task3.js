@@ -12,7 +12,7 @@ const supermarketLayer = L.geoJSON(super_markets, {
   const samplegeo = turf.buffer(s2, 1, { units: "kilometers" });
 
   const samplegeol = L.geoJSON(samplegeo, {
-    style: { color: "yellow", dashArray: "5,5", fillOpacity: 0.1 },
+    style: { color: "red", dashArray: "5,5", fillOpacity: 0.1 },
   }).addTo(mymap);
 
   $("#btnTask3").click(function(){
