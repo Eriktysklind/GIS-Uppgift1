@@ -1,141 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Uppgift 1 - Grupp 9</title>
-        <link rel="stylesheet" href="src/leaflet.css">
-        <link rel="stylesheet" href="src/css/bootstrap.css">
-        <link rel="stylesheet" href="src/plugins/L.Control.Zoomslider.css">
-        <link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css">
-        <link rel="stylesheet" href="dist/MarkerCluster.css">
-        <link rel="stylesheet" href="dist/MarkerCluster.Default.css">
-        <link rel="stylesheet" href="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Uppgift 1 - Grupp 9</title>
+    <link rel="stylesheet" href="src/leaflet.css" />
+    <link rel="stylesheet" href="src/css/bootstrap.css" />
+    <link rel="stylesheet" href="src/plugins/L.Control.Zoomslider.css" />
+    <link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css" />
+    <link rel="stylesheet" href="dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
+    <link
+      rel="stylesheet"
+      href="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.css"
+    />
 
-        
-        
-        <script src="src/leaflet-src.js"></script>
-        <script src="src/jquery-3.6.0.min.js"></script>
-        <script src="src/turf.min.js" charset="utf-8"></script>
-        <script src="src/plugins/L.Control.Zoomslider.js"></script>
-        <script src="src/plugins/L.Control.Sidebar.js"></script>
-        <script src='swedish_counties.js'></script>
-        <script src='countries.js'></script>
-        <script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
-        
+    <script src="src/leaflet-src.js"></script>
+    <script src="src/jquery-3.6.0.min.js"></script>
+    <script src="src/turf.min.js" charset="utf-8"></script>
+    <script src="src/plugins/L.Control.Zoomslider.js"></script>
+    <script src="src/plugins/L.Control.Sidebar.js"></script>
+    <script src="swedish_counties.js"></script>
+    <script src="super_markets.js"></script>
+    <script src="countries.js"></script>
+    <script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
 
-        <style>
-            #mapdiv {
-                height: 100vh;
-            }  
-            
-            #side-bar {
-			position: absolute;
-			z-index: 1000;
-			background: rgba(255,255,255,0.7);
-			padding: 10px;
-			right: 0;
-            top: 0;
-			margin: 10px;
-			border-radius: 10px;
-			min-height: 200px;
-            }
-                        
-        </style>
-    </head>
-    <body>
-       <div id="mapdiv" class="col-md-9"></div>
-       
-       <div id="side-bar" class="col-md-3"><h2>My Map</h2>
-            <button id="l1">layer1</button>
-            <button id="l2">layer2</button>
-            <button id='btnTask1' class='btn btn-primary btn-block'>Zoom to task 1</button>
-       </div>
-       
-       <div id="sidebar"><h1>leaflet-sidebar</h1>
-       </div>
-        
-       <script>
-            var mymap; 
-            var lyrOSM; 
-            var mrkCurrentLocation;
-            var ctlZoomslider;
-            var swedishlayer = L.geoJson(swedish_counties);
-            var countrieslayer
-            var ctlSlidebar;
-            var sample = L.geoJson(sample);
-            var sample1 = L.geoJson(sample1);
-            
-           
-            $(document).ready(function(){
-                mymap = L.map('mapdiv', {center:[60.5141552254804, 15.714495440221565], zoom:13});
-                lyrOSM= L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-                mymap.addLayer(lyrOSM);
-                
-                
-                
-                ctlZoomslider = L.control.zoomslider({position:'topright'}).addTo(mymap);
-                
-                var sidebar = L.control.sidebar('sidebar', {position: 'left'});
-                mymap.addControl(sidebar);
-                
-    
-                                
-                document.getElementById("l1").addEventListener("click", sweden);
+    <style>
+      #mapdiv {
+        height: 100vh;
+      }
 
-		          function sweden(){
-                      if(mymap.hasLayer(swedishlayer)){
-                          mymap.removeLayer(swedishlayer);
-                         
-                          sidebar.hide();
-                          
-                      } else {
-                          swedishlayer.addTo(mymap);
-                          
-                          sidebar.show();
-                      }
-			
-		          };
-                
-                countrieslayer = L.geoJson(countries, {
-			    onEachFeature: function (feature, layer) {
-				layer.bindPopup(feature.properties.name);
-			     }
-		         });
+      #side-bar {
+        position: absolute;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.7);
+        padding: 10px;
+        right: 0;
+        top: 0;
+        margin: 10px;
+        border-radius: 10px;
+        min-height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapdiv" class="col-md-9"></div>
 
+    <div id="side-bar" class="col-md-3">
+      <h2>Grupp 9 - Tasks</h2>
+      <button id="l1">layer1</button>
+      <button id="l2">layer2</button>
+      <button id="btnTask1" class="btn btn-primary btn-block">
+        Zoom to task 1
+      </button>
+      <button id="btnTask3" class="btn btn-primary btn-block">
+        Zoom to task 3
+      </button>
+    </div>
 
-		      document.getElementById("l2").addEventListener("click", c_layers);
-                
-                function c_layers(){
-                    if(mymap.hasLayer(countrieslayer)){
-                        mymap.removeLayer(countrieslayer);
-                    } 
-                    else {
-                        countrieslayer.addTo(mymap);
-                        }
-                    };
-                
-                
-/*                 
+    <div id="sidebar"><h1>leaflet-sidebar</h1></div>
+
+    <script>
+      var mymap;
+      var lyrOSM;
+      var mrkCurrentLocation;
+      var ctlZoomslider;
+      var swedishlayer = L.geoJson(swedish_counties);
+      var countrieslayer;
+      var ctlSlidebar;
+      var sample = L.geoJson(sample);
+      //var supermarketLayer = L.geoJson(super_markets);
+
+      $(document).ready(function () {
+        mymap = L.map("mapdiv", {
+          center: [60.5141552254804, 15.714495440221565],
+          zoom: 13,
+        });
+        lyrOSM = L.tileLayer(
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        );
+        mymap.addLayer(lyrOSM);
+
+        ctlZoomslider = L.control
+          .zoomslider({ position: "topright" })
+          .addTo(mymap);
+
+        var sidebar = L.control.sidebar("sidebar", { position: "left" });
+        mymap.addControl(sidebar);
+
+        document.getElementById("l1").addEventListener("click", sweden);
+
+        function sweden() {
+          if (mymap.hasLayer(swedishlayer)) {
+            mymap.removeLayer(swedishlayer);
+
+            sidebar.hide();
+          } else {
+            swedishlayer.addTo(mymap);
+
+            sidebar.show();
+          }
+        }
+
+        countrieslayer = L.geoJson(countries, {
+          onEachFeature: function (feature, layer) {
+            layer.bindPopup(feature.properties.name);
+          },
+        });
+
+        document.getElementById("l2").addEventListener("click", c_layers);
+
+        function c_layers() {
+          if (mymap.hasLayer(countrieslayer)) {
+            mymap.removeLayer(countrieslayer);
+          } else {
+            countrieslayer.addTo(mymap);
+          }
+        }
+
+        /*                 
                 $("#btnTask1").click(function(){
                     mymap.setView([60.5141552254804, 15.714495440221565], 13);
                 }) */
-                
-                
-                
-                // Buffer
-                            
-  /*              sample1.addTo(mymap);
-                var s2 = sample1.toGeoJSON();
-                
-                var samplegeo = turf.buffer(s2, 0.5,{units: 'kilometers' });
 
-                var samplegeol = L.geoJSON(samplegeo, {style:{color:'yellow', dashArray:'5,5', fillOpacity:0.1}}).addTo(mymap);
-    */               
-                    
-  
-            });
-            
-       </script>
-       <script src="task1.js"></script>
-    </body>
+      });
+    </script>
+    <script src="tasks/task1.js"></script>
+    <script src="tasks/task3.js"></script>
+  </body>
 </html>
