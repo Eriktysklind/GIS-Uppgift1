@@ -55,6 +55,9 @@
       <button id="btnTask3" class="btn btn-primary btn-block">
         Zoom to task 3
       </button>
+      <button id="btnTask4" class="btn btn-primary btn-block">
+        Zoom to task 4
+      </button>
     </div>
 
     <div id="sidebar"><h1>leaflet-sidebar</h1></div>
@@ -86,6 +89,8 @@
 
         var sidebar = L.control.sidebar("sidebar", { position: "left" });
         mymap.addControl(sidebar);
+
+        L.control.polylineMeasure().addTo(mymap);
 
         document.getElementById("l1").addEventListener("click", sweden);
 
@@ -126,5 +131,6 @@
     </script>
     <script src="/static/tasks/task1.js"></script>
     <script src="/static/tasks/task3.js"></script>
+    <script src="/static/tasks/task4.js"></script>
   </body>
 </html>

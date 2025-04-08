@@ -7,8 +7,8 @@ function clearMap() {
   }
   
   $(document).ready(function () {
-    $("#btnTask2").click(function () {
+    $("#btnTask5").click(function () {
       clearMap();
-      loadTask2();
+      loadTask5();
     });
   });
