@@ -5,7 +5,10 @@
     <title>Uppgift 1 - Grupp 9</title>
     <link rel="stylesheet" href="/static/src/leaflet.css" />
     <link rel="stylesheet" href="/static/src/css/bootstrap.css" />
-    <link rel="stylesheet" href="/static/src/plugins/L.Control.Zoomslider.css" />
+    <link
+      rel="stylesheet"
+      href="/static/src/plugins/L.Control.Zoomslider.css"
+    />
     <link rel="stylesheet" href="/static/src/plugins/L.Control.Sidebar.css" />
     <link rel="stylesheet" href="/static/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="/static/dist/MarkerCluster.Default.css" />
@@ -13,6 +16,8 @@
       rel="stylesheet"
       href="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.css"
     />
+    <link rel="stylesheet" href="/static/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="/static/dist/MarkerCluster.Default.css" />
 
     <script src="/static/src/leaflet-src.js"></script>
     <script src="/static/src/jquery-3.6.0.min.js"></script>
@@ -21,8 +26,10 @@
     <script src="/static/src/plugins/L.Control.Sidebar.js"></script>
     <script src="/static/swedish_counties.js"></script>
     <script src="/static/data/super_markets.js"></script>
+    <script src="/static/data/fuel.js"></script>
     <script src="/static/countries.js"></script>
     <script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
+    <script src="/static/dist/leaflet.markercluster.js"></script>
 
     <style>
       #mapdiv {
@@ -52,15 +59,54 @@
       <button id="btnTask1" class="btn btn-primary btn-block">
         Zoom to task 1
       </button>
+      <button id="btnTask2" class="btn btn-primary btn-block">
+        Zoom to task 2
+      </button>
       <button id="btnTask3" class="btn btn-primary btn-block">
         Zoom to task 3
       </button>
       <button id="btnTask4" class="btn btn-primary btn-block">
         Zoom to task 4
       </button>
+      <button id="btnTask5" class="btn btn-primary btn-block">
+        Zoom to task 5
+      </button>
     </div>
 
-    <div id="sidebar"><h1>leaflet-sidebar</h1></div>
+    <div id="sidebar"><h1>leaflet-sidebar</h1>
+      <ul>
+        <li>
+            <h3>Söderbaumskaskolan</h3>
+            <p>År 2001 grundades Söderbaumska skolan som en fristående grundskola med en kulturprofil. I oktober 2021 bytte skolan namn till Innovitaskolan Falun i samband med en ny skolprofilering inom AcadeMedia-koncernen.</p>
+            <p>Antal elever: 550</p>
+            <button id="btns1">Go to Söderbaumskaskolan</button>
+        </li>
+        <li>
+            <h3>Britsarvsskolan</h3>
+            <p>​Britsarvsskolan i Falun började byggas 1964 på platsen där gården Bojsenburg tidigare låg, och stod klar 1966 som en toppmodern skola ritad av arkitekt Jack Hansson. </p>
+            <p>Antal elever: 530</p>
+            <button id="btns2">Go to Britsarvsskolan</button>
+        </li>
+        <li> 
+            <h3>Hälsinggårdsskolan</h3>
+            <p>Idag är Hälsinggårdsskolan en F-9-skola med cirka 700 elever, känd för sitt inkluderande och mångkulturella perspektiv. För närvarande genomgår skolan en omfattande renovering för att modernisera lokalerna och samlokalisera kommunens särskolor, med planerad färdigställning 2025.</p>
+            <p>Antal elever: 600</p>
+            <button id="btns3">Go to Hälsinggårdsskolan</button>
+        </li>
+        <li> 
+            <h3>VästraSkolan</h3>
+            <p>​Västra skolan i Falun invigdes 1915 för att avlasta den då överbelastade Östra skolan. Byggnaden ritades av stadsarkitekten Klas Boman och har tjänat som utbildningsinstitution i över ett sekel.</p>
+            <p>Antal elever: 470</p>
+            <button id="btns4">Go to VästraSkolan</button>
+        </li>
+        <li>
+            <h3>Mosaik</h3>
+            <p>Friskolan Mosaik i Falun grundades 2007 och drivs som en fristående ekonomisk förening. Skolan är belägen på Vasagatan 28 i centrala Falun och erbjuder undervisning från förskoleklass till årskurs 9.</p>
+            <p>Antal elever: 270</p>
+            <button id="btns5">Go to Mosaik</button>
+        </li>
+    </ul>
+    </div>
 
     <script>
       var mymap;
@@ -70,8 +116,8 @@
       var swedishlayer = L.geoJson(swedish_counties);
       var countrieslayer;
       var ctlSlidebar;
-    
-      
+      let sidebar;
+      let polylineMeasure;
 
       $(document).ready(function () {
         mymap = L.map("mapdiv", {
@@ -87,10 +133,20 @@
           .zoomslider({ position: "topright" })
           .addTo(mymap);
 
-        var sidebar = L.control.sidebar("sidebar", { position: "left" });
+        sidebar = L.control.sidebar("sidebar", { position: "left" });
         mymap.addControl(sidebar);
 
         L.control.polylineMeasure().addTo(mymap);
+
+        
+        polylineMeasure = L.control.polylineMeasure({
+                        position: 'topleft',
+                        unit: 'kilometres',
+                        showBearings: true,
+                        clearMeasurementsOnStop: false,
+                        showClearControl: true,
+                        showUnitControl: true
+                    }).addTo(mymap);
 
         document.getElementById("l1").addEventListener("click", sweden);
 
@@ -122,15 +178,13 @@
           }
         }
 
-        /*                 
-                $("#btnTask1").click(function(){
-                    mymap.setView([60.5141552254804, 15.714495440221565], 13);
-                }) */
 
       });
     </script>
     <script src="/static/tasks/task1.js"></script>
+    <script src="/static/tasks/task2.js"></script>
     <script src="/static/tasks/task3.js"></script>
     <script src="/static/tasks/task4.js"></script>
+    <script src="/static/tasks/task5.js"></script>
   </body>
 </html>
