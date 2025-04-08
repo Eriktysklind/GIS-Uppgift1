@@ -28,7 +28,7 @@ const polyline = L.polyline(linesTask1, { color: "blue" }).addTo(mymap).bindPopu
 L.control.polylineMeasure().addTo(mymap);
 
 const blackIcon = L.icon({
-  iconUrl: "../map-marker.svg",
+  iconUrl: "/static/img/map-marker.svg",
   iconSize: [32, 37], // size of the icon
   iconAnchor: [32, 37], // point of the icon which will correspond to marker's location
   popupAnchor: [0, -30], // point from which the popup should open relative to the iconAnchor
