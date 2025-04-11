@@ -71,8 +71,11 @@
       <button id="btnTask5" class="btn btn-primary btn-block">
         Zoom to task 5
       </button>
+      <button id="btnTask6" class="btn btn-primary btn-block">
+        Zoom to task 6
+      </button>
     </div>
-
+    <div id="sidebarWeather"></div>
     <div id="sidebar"><h1>leaflet-sidebar</h1>
       <ul>
         <li>
@@ -136,6 +139,9 @@
         sidebar = L.control.sidebar("sidebar", { position: "left" });
         mymap.addControl(sidebar);
 
+        sidebarWeather = L.control.sidebar("sidebarWeather", { position: "left" });
+        mymap.addControl(sidebarWeather);
+
         L.control.polylineMeasure().addTo(mymap);
 
         
@@ -186,5 +192,6 @@
     <script src="/static/tasks/task3.js"></script>
     <script src="/static/tasks/task4.js"></script>
     <script src="/static/tasks/task5.js"></script>
+    <script src="/static/tasks/task6.js"></script>
   </body>
 </html>
