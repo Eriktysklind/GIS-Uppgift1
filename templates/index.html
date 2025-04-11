@@ -54,8 +54,6 @@
 
     <div id="side-bar" class="col-md-3">
       <h2>Grupp 9 - Tasks</h2>
-      <button id="l1">layer1</button>
-      <button id="l2">layer2</button>
       <button id="btnTask1" class="btn btn-primary btn-block">
         Zoom to task 1
       </button>
@@ -154,35 +152,6 @@
                         showUnitControl: true
                     }).addTo(mymap);
 
-        document.getElementById("l1").addEventListener("click", sweden);
-
-        function sweden() {
-          if (mymap.hasLayer(swedishlayer)) {
-            mymap.removeLayer(swedishlayer);
-
-            sidebar.hide();
-          } else {
-            swedishlayer.addTo(mymap);
-
-            sidebar.show();
-          }
-        }
-
-        countrieslayer = L.geoJson(countries, {
-          onEachFeature: function (feature, layer) {
-            layer.bindPopup(feature.properties.name);
-          },
-        });
-
-        document.getElementById("l2").addEventListener("click", c_layers);
-
-        function c_layers() {
-          if (mymap.hasLayer(countrieslayer)) {
-            mymap.removeLayer(countrieslayer);
-          } else {
-            countrieslayer.addTo(mymap);
-          }
-        }
 
 
       });
