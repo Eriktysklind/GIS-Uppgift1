@@ -1,3 +1,6 @@
+//https://openweathermap.org/
+//Dokumentation om hur man hämtar väder data från openweathermap. Koden är byggt från vad som behövs för att hämta datan.
+
 const cities = [
   { name: "Falun", lat: 60.6061, lon: 15.6357 },
   { name: "Leksand", lat: 60.731, lon: 14.9856 },
