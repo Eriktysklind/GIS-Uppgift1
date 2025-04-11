@@ -13,7 +13,7 @@ function loadTask6() {
   container.innerHTML = "<h3>Väder i svenska städer</h3>";
 
   const weatherList = document.createElement("div");
-  weatherList.id = "weather-list";
+
 
   container.appendChild(weatherList);
   sidebarWeather.setContent(container);

@@ -29,19 +29,19 @@ function loadTask2() {
   mymap.setView([60.606715170380895, 15.635754054322716], 13);
   sidebar.show();
 
-  L.marker([60.61668314092263, 15.627644549953436], { icon: blackIcon })
+  L.marker([60.61668314092263, 15.627644549953436])
     .addTo(mymap)
     .bindPopup("Söderbaumska");
-  L.marker([60.625256903746184, 15.622433198014082], { icon: blackIcon })
+  L.marker([60.625256903746184, 15.622433198014082])
     .addTo(mymap)
     .bindPopup("Britsarvsskolan");
-  L.marker([60.592595759762666, 15.685269813355674], { icon: blackIcon })
+  L.marker([60.592595759762666, 15.685269813355674])
     .addTo(mymap)
     .bindPopup("hälsinggårdsskolan");
-  L.marker([60.604365663833036, 15.624258467326692], { icon: blackIcon })
+  L.marker([60.604365663833036, 15.624258467326692])
     .addTo(mymap)
     .bindPopup("Västraskolan");
-  L.marker([60.60984456541524, 15.638397283032829], { icon: blackIcon })
+  L.marker([60.60984456541524, 15.638397283032829])
     .addTo(mymap)
     .bindPopup("Mosaik");
 
