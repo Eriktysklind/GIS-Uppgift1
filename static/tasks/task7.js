@@ -1,6 +1,3 @@
-//Papaparse möjligt lösning
-//https://medium.com/@ryan_forrester_/read-csv-files-in-javascript-how-to-guide-8d0ac6df082a
-
 function loadTask7() {
     clearMap();
     mymap.setView([59.33559401837791, 18.021282737696875], 10);
@@ -20,7 +17,7 @@ function loadTask7() {
             fillOpacity: 0.8,
           })
             .addTo(mymap)
-            .bindPopup(`<strong>${school.name || "Skola"}</strong><br>Kluster: ${school.cluster}`);
+            .bindPopup(`<strong>${school.Name || "Skola"}</strong><br>Kluster: ${school.cluster}`);
         });
       });
   }
