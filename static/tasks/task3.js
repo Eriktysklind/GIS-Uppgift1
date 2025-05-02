@@ -4,6 +4,7 @@ function loadTask3() {
   mymap.setView([60.3449503, 17.5163196], 8);
 
   L.geoJSON(super_markets, {
+    //Med geoJSON lägger vi till ett lager och lägger sedan till namnet på matbutiken när man klickar.
     onEachFeature: function (feature, layer) {
       if (feature.properties && feature.properties.name) {
         layer.bindPopup(`<strong>${feature.properties.name}</strong>`);

@@ -17,10 +17,10 @@ function loadTask5(){
        }
      }
    });
- 
 
+   //LÄgger till det nya geoJSON lagret till klustret. 
    markerCluster.addLayer(fuelLayer);
- 
+   //LÄgger till lagret till vår karta.
    mymap.addLayer(markerCluster);
 
   }
