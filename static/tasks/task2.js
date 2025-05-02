@@ -1,3 +1,4 @@
+// array med kordinater på det 5 skolorna, denna används när vi mäter distanens mellan skolorna med polylinemeasure senare
 const school1Coords = [
   { lat: 60.61668314092263, lng: 15.627644549953436 },
   { lat: 60.625256903746184, lng: 15.622433198014082 },
@@ -25,7 +26,7 @@ function loadTask2() {
       showUnitControl: true,
     })
     .addTo(mymap);
-
+// här använder vi leaflet markers och ikoner för att lägga till det på kartan när task 2 körs
   mymap.setView([60.606715170380895, 15.635754054322716], 13);
   sidebar.show();
 
@@ -45,8 +46,10 @@ function loadTask2() {
     .addTo(mymap)
     .bindPopup("Mosaik");
 
+    //intiserar polylinemeasure funktionen från leaflet så att distansdatan mellan skolorna visas
   polylineMeasure.seed([school1Coords]);
-
+ 
+  // Klickfunktioner för att ändra view till den geografiska punkten skolan är på.
   $("#btns1").click(function () {
     mymap.setView([60.61668314092263, 15.627644549953436], 17);
   });
