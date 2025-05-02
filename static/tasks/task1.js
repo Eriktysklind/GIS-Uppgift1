@@ -29,7 +29,7 @@ function loadTask1() {
     .bindPopup(
       "<h3>Vikavägen</h3><img src= '/static/img/vika.jpg'width='100rem'>"
     );
-
+  //Lägger till en marker för platsen
   L.marker([60.51402124901837, 15.714639203546412], {})
     .addTo(mymap)
     .bindPopup(
@@ -37,10 +37,13 @@ function loadTask1() {
     );
 }
 
+//Skapar en funktion för att radera alla tidigare layers på våran map förutom grundlagret. 
 function clearMap() {
   mymap.eachLayer(function (layer) {
+    //Går igenom alla lagar som visa på vår karta
     if (layer !== lyrOSM) {
       mymap.removeLayer(layer);
+      //Tarbort lagret från vårt karta.
     }
   });
 }

@@ -119,10 +119,13 @@ function loadTask6() {
   });
 }
 
+//Skapar en funktion för att radera alla tidigare layers på våran map förutom grundlagret. 
 function clearMap() {
   mymap.eachLayer(function (layer) {
+    //Går igenom alla lagar som visa på vår karta
     if (layer !== lyrOSM) {
       mymap.removeLayer(layer);
+      //Tarbort lagret från vårt karta.
     }
   });
 }

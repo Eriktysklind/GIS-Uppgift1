@@ -64,10 +64,13 @@ function loadTask2() {
   });
 }
 
+//Skapar en funktion för att radera alla tidigare layers på våran map förutom grundlagret. 
 function clearMap() {
   mymap.eachLayer(function (layer) {
+    //Går igenom alla lagar som visa på vår karta
     if (layer !== lyrOSM) {
       mymap.removeLayer(layer);
+      //Tarbort lagret från vårt karta.
     }
   });
 }
@@ -79,19 +82,4 @@ $(document).ready(function () {
   });
 });
 
-/* $("#btns1").click(function () {
-  mymap.setView([60.61668314092263, 15.627644549953436], 17);
-});
-$("#btns2").click(function () {
-  mymap.setView([60.625256903746184, 15.622433198014082], 17);
-});
-$("#btns3").click(function () {
-  mymap.setView([60.592595759762666, 15.685269813355674], 17);
-});
-$("#btns4").click(function () {
-  mymap.setView([60.604365663833036, 15.624258467326692], 17);
-});
-$("#btns5").click(function () {
-  mymap.setView([60.60984456541524, 15.638397283032829], 17);
-});
- */
+

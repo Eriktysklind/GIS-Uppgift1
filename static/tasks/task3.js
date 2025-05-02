@@ -1,5 +1,6 @@
 //https://turfjs.org/
 function loadTask3() {
+  //Sätter vyn för när man trycker på knappen
   mymap.setView([60.3449503, 17.5163196], 8);
 
   L.geoJSON(super_markets, {
@@ -10,6 +11,7 @@ function loadTask3() {
     }
   }).addTo(mymap);
 
+  //Deklarerar en variabel för buffer funktion där vi ställer radien på 1 km. 
   const buffered = turf.buffer(super_markets, 1, { units: "kilometers" });
 
   const features = buffered.features;
@@ -35,6 +37,7 @@ function loadTask3() {
     }
   }
 
+  //Mappar ut de butiker som överlappar varandra och tilldelar de färgen röd.
   L.geoJSON(buffered, {
     style: {
       color: "red",
@@ -43,6 +46,7 @@ function loadTask3() {
     }
   }).addTo(mymap);
 
+  //Mappar ut den butiker som inte överlappar varandra och tilldelar de färgen grön. 
   L.geoJSON(nonOverlapping, {
     style: {
       color: "green",
