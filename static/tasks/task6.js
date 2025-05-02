@@ -98,43 +98,10 @@ function loadTask6() {
         // vi använder leaflet markers för att skapa en popup med aktuellt väder
         const markerpop = L.marker([city.lat, city.lon]).addTo(mymap);
         markerpop.bindPopup(
-          `<strong>${city.name}</strong><br>${weather}, ${temp}°C`
+          `<strong>${city.name}</strong><br>${weather}, ${tempNow}°C`
         );
       });
-    /*     fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        const weather = data.weather[0].description;
-        const temp = data.main.temp;
-        const wind = data.wind.speed;
-        const icon = data.weather[0].icon;
-        const daily = data.daily.temp;
-
-        const cityDiv = document.createElement("div");
-        cityDiv.style.marginBottom = "1rem";
-        cityDiv.innerHTML = `
-              <h3>${city.name}</h3>
-              ${weather}, ${temp}°C
-              <p>Vind: ${wind} m/s</p>
-              <p>${daily} </p>
-              <img src="https://openweathermap.org/img/wn/${icon}@2x.png">
-              <button class="btnGoToCity" >
-              Gå till stad
-              </button>
-            `;
-        cityDiv
-          .querySelector(".btnGoToCity")
-          .addEventListener("click", function () {
-            mymap.setView([city.lat, city.lon], 13);
-          });
-
-        weatherList.appendChild(cityDiv);
-
-        const markerpop = L.marker([city.lat, city.lon]).addTo(mymap);
-        markerpop.bindPopup(
-          `<strong>${city.name}</strong><br>${weather}, ${temp}°C`
-        );
-      });*/
+    
   });
 }
 

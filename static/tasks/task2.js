@@ -6,12 +6,7 @@ const school1Coords = [
   { lat: 60.604365663833036, lng: 15.624258467326692 },
   { lat: 60.60984456541524, lng: 15.638397283032829 },
 ];
-const blackIcon = L.icon({
-  iconUrl: "/static/img/map-marker.svg",
-  iconSize: [32, 37], // size of the icon
-  iconAnchor: [32, 37], // point of the icon which will correspond to marker's location
-  popupAnchor: [0, -30], // point from which the popup should open relative to the iconAnchor
-});
+
 
 function loadTask2() {
   mymap.removeControl(polylineMeasure);
